@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // PUBLIC_INTERFACE
 export default function Hero() {
@@ -10,7 +11,7 @@ export default function Hero() {
         <p className="hero-subtitle">
           We craft innovative solutions that transform businesses and create lasting impact.
         </p>
-        <a className="cta-button" href="#contact">Get Started</a>
+        <Link className="cta-button" to="/contact">Get Started</Link>
       </div>
       <div className="hero-animation" aria-hidden="true">
         <span className="floating-element"></span>

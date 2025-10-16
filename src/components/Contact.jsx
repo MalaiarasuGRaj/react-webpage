@@ -66,7 +66,7 @@ export default function Contact() {
           </div>
 
           <form className="contact-form-container" noValidate onSubmit={onSubmit}>
-            {sent && <div role="status" className="alert-success" style="margin-bottom:1rem;color:#2f855a;font-weight:600;">Message sent! We'll get back to you soon.</div>}
+            {sent && <div role="status" className="alert-success" style={{marginBottom:'1rem', color:'#2f855a', fontWeight:600}}>Message sent! We'll get back to you soon.</div>}
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input id="name" name="name" value={data.name} onChange={(e)=>setData({...data, name:e.target.value})} required placeholder="Your name" />

@@ -1,6 +1,6 @@
-# React Webpage (Vite + React)
+# React Webpage (Vite + React + React Router)
 
-A modern, responsive single-page company landing site built with React and Vite. Sections include Hero, About, Services, Portfolio, Testimonials, and Contact (with client-side validation).
+A modern, responsive multi-page company website built with React, Vite, and React Router. Dedicated pages include Home, About, Services, Portfolio (with detail), Testimonials, Careers (with detail), Contact (with validation), and Legal.
 
 ## Quick Start
 
@@ -19,20 +19,53 @@ Open http://localhost:3000 to view the app.
 
 ## Scripts
 
-- npm start — Runs Vite dev server (host 0.0.0.0, port from PORT or 3000).
+- npm start — Runs Vite dev server (host 0.0.0.0, port 3000 strict).
 - npm run build — Builds for production to dist/.
 - npm run preview — Preview the production build on 0.0.0.0:PORT (default 3000).
 
+## Routes
+
+- / — Home (Hero, Services, Portfolio highlights, Testimonials)
+- /about — About the company
+- /services — Services grid + FAQ
+- /portfolio — Portfolio grid (filterable) from local data
+- /portfolio/:slug — Case study detail
+- /testimonials — Client testimonials
+- /careers — Jobs list
+- /careers/:id — Job detail
+- /contact — Contact form (client-side validated)
+- /privacy — Privacy Policy
+- /terms — Terms of Service
+
 ## Project Structure
 
-- index.html — Vite entry HTML with #root mount.
-- src/main.jsx — React entry point.
-- src/App.jsx — Main app assembling sections.
-- src/components/* — Section components (Hero, About, Services, Portfolio, Testimonials, Contact).
-- src/styles.css — Global styles and responsive layout.
+- index.html — Base HTML with route-friendly <base href="/"> and default meta.
+- src/main.jsx — Router entry point with lazy-loaded pages.
+- src/layouts/Layout.jsx — Shared layout (Header, Footer, skip-to-content link).
+- src/components/* — Reusable components (Hero, Contact, etc.).
+- src/pages/* — Route pages for each top-level path.
+- src/data/* — Local JSON-like data modules for services, case studies, testimonials, jobs.
+- src/styles.css — Global styles, responsive layout, and header/footer/nav styles.
+
+## Data-driven Content
+
+Update local data inside:
+- src/data/services.js
+- src/data/caseStudies.js
+- src/data/testimonials.js
+- src/data/jobs.js
+
+Pages import from these modules at runtime; no external APIs are used.
+
+## Accessibility and Responsiveness
+
+- Shared layout includes a “Skip to content” link.
+- Visible focus styles and keyboard-friendly navigation.
+- Mobile nav uses a hamburger toggle with aria-expanded and closes on link click / Esc.
+- Responsive grids and typography support mobile → desktop breakpoints.
 
 ## Notes
 
 - No external API keys or environment variables required to run.
-- The development server binds to 0.0.0.0 for containerized environments.
-- Contact form performs client-side validation only and does not submit to a backend.
+- The development server uses port 3000 and allows the configured preview host (see vite.config.js).
+- The Contact form performs client-side validation only and does not submit to a backend.
