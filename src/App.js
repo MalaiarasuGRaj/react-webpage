@@ -259,9 +259,9 @@ export default function App() {
                 </div>
               </div>
               <div className="social-links">
-                <a href="#" className="social-link">LinkedIn</a>
-                <a href="#" className="social-link">Twitter</a>
-                <a href="#" className="social-link">GitHub</a>
+                <button type="button" className="social-link" aria-label="LinkedIn link placeholder">LinkedIn</button>
+                <button type="button" className="social-link" aria-label="Twitter link placeholder">Twitter</button>
+                <button type="button" className="social-link" aria-label="GitHub link placeholder">GitHub</button>
               </div>
             </div>
             <form className="contact-form" onSubmit={handleSubmit}>
