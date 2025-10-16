@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import './styles.css';
 import Layout from './layouts/Layout.jsx';
 
@@ -19,12 +19,16 @@ const NotFound = lazy(() => import('./pages/NotFound.jsx'));
 
 // PUBLIC_INTERFACE
 function bootstrap() {
-  /** Bootstraps the React Router application into #root with a shared layout. */
+  /**
+   * Bootstraps the React Router application into #root with a shared layout.
+   * HashRouter is used to ensure reliable routing behind proxies/CDN previews that
+   * may not provide SPA history API rewrites, preventing blank pages or 504s.
+   */
   const rootEl = document.getElementById('root');
   const root = createRoot(rootEl);
   root.render(
     <React.StrictMode>
-      <BrowserRouter basename="/">
+      <HashRouter>
         <Suspense fallback={<div className="container" style={{ padding: '2rem' }}>Loading...</div>}>
           <Routes>
             <Route element={<Layout />}>
@@ -43,7 +47,7 @@ function bootstrap() {
             </Route>
           </Routes>
         </Suspense>
-      </BrowserRouter>
+      </HashRouter>
     </React.StrictMode>
   );
 }

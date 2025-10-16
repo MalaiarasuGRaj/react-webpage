@@ -17,6 +17,7 @@ export default defineConfig(({ mode }) => {
   const previewHost = 'vscode-internal-16360-beta.beta01.cloud.kavia.ai';
 
   return {
+    base: '/',
     plugins: [react()],
     server: {
       // Listen on all interfaces; 'true' is also acceptable, but '0.0.0.0' is explicit.
@@ -24,7 +25,7 @@ export default defineConfig(({ mode }) => {
       port: 3000, // enforce port 3000 as requested
       strictPort: true,
       // Ensure the host is permitted to avoid "host not allowed" errors
-      allowedHosts: [previewHost]
+      allowedHosts: [previewHost, 'localhost', '127.0.0.1']
     },
     preview: {
       host: '0.0.0.0',
