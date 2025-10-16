@@ -15,6 +15,7 @@ const Careers = lazy(() => import('./pages/Careers.jsx'));
 const ContactPage = lazy(() => import('./pages/ContactPage.jsx'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy.jsx'));
 const TermsOfService = lazy(() => import('./pages/TermsOfService.jsx'));
+const NotFound = lazy(() => import('./pages/NotFound.jsx'));
 
 // PUBLIC_INTERFACE
 function bootstrap() {
@@ -23,7 +24,7 @@ function bootstrap() {
   const root = createRoot(rootEl);
   root.render(
     <React.StrictMode>
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <Suspense fallback={<div className="container" style={{ padding: '2rem' }}>Loading...</div>}>
           <Routes>
             <Route element={<Layout />}>
@@ -38,6 +39,7 @@ function bootstrap() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsOfService />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
         </Suspense>
